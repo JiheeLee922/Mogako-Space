@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://springboot-webservice.cibzcslz3sbq.ap-northeast-2.rds.amazonaws.com:3306/springboot_webservice?serverTimezone=UTC&characterEncoding=UTF-8
+    username: jihee_sub
+    password: jihee_subspringboot
+    
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      #ddl-auto: create
+      
+  mvc:
+    hiddenmethod:      filter:        enabled: true
+    view:
+      suffix: .jsp 
+      prefix: /WEB-INF/views/    
+
+  mail:
+    host: smtp.gmail.com
+    port : 587
+    username : leejhdev922@gmail.com
+    password : 비밀번호입력하세요
+    properties:      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable : true
+
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+                
+server:
+  error:
+    whitelabel:
+      enabled: true 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE  
