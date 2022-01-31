@@ -3,6 +3,7 @@ package com.mogako.mogakospace.board.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,17 +25,17 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 
-@Controller
+@RestController
 @Api(value="BoardController V1")
-@AllArgsConstructor
 @RequestMapping(value = "/board")
 public class BoardController {
 	
+	@Autowired
 	private BoardService boardService;
 	
-	@ApiOperation(value = "�Խ��� ����Ʈ", notes = "�Խ��� ����Դϴ�.")
+	@ApiOperation(value = "게시판리스트", notes = "게시판 목록입니다.")
 	@GetMapping("/list")
-	public String list(Model model, @ApiParam(value = "�Խ�����������ȣ", required = true, example = "1") @RequestParam(value = "page", defaultValue = "1") Integer pageNum , @RequestParam(value = "keyword", required = false) String keyword) {
+	public String list(Model model, @ApiParam(value = "게시판페이지번호", required = true, example = "1") @RequestParam(value = "page", defaultValue = "1") Integer pageNum , @RequestParam(value = "keyword", required = false) String keyword) {
 		List<BoardDto> boardList = new ArrayList<>();
 		boardList = boardService.getBoardList(pageNum, keyword);
 		Integer[] pageList = boardService.getPageList(pageNum,keyword);
@@ -57,11 +58,10 @@ public class BoardController {
 	}
 	
 	@GetMapping("/post/{no}")
-    public String detail(@PathVariable("no") Long no, Model model) {
+    public BoardDto detail(@PathVariable("no") Long no) {
         BoardDto boardDTO = boardService.getPost(no);
 
-        model.addAttribute("boardDto", boardDTO);
-        return "board/detail";
+        return boardDTO;
     }
 
     @GetMapping("/post/edit/{no}")

@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://springboot-webservice.cibzcslz3sbq.ap-northeast-2.rds.amazonaws.com:3306/springboot_webservice?serverTimezone=UTC&characterEncoding=UTF-8
-    username: jihee_sub
-    password: jihee_subspringboot
+    url: jdbc:mariadb://mogako-space.cshwr3mp4lrm.ap-northeast-2.rds.amazonaws.com:3306/mogako?serverTimezone=UTC&characterEncoding=UTF-8
+    username: mogako
+    password: mogakoadmin12!
     
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -13,11 +13,11 @@ spring:
       format_sql: true
       #ddl-auto: create
       
-  mvc:
-    hiddenmethod:      filter:        enabled: true
-    view:
-      suffix: .jsp 
-      prefix: /WEB-INF/views/    
+#  mvc:
+#    hiddenmethod:#      filter:#        enabled: true
+#    view:
+#      suffix: .jsp 
+#      prefix: /WEB-INF/views/    
 
   mail:
     host: smtp.gmail.com
