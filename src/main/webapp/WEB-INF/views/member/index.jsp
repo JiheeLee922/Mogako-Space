@@ -9,7 +9,7 @@
     <title>메인</title>
 </head>
 <body>
-    <h1>메인 페이지</h1>
+    <h1>모각코 메인 페이지</h1>
     <hr>
     <sec:authorize access="isAnonymous()">
 	    <a  href="/user/login">로그인</a>
