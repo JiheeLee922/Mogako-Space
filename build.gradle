@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.jihee'
+group = 'com.mogako'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
@@ -61,16 +61,16 @@ dependencies {
     runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     
-    //¿ÜºÎ ºê·ÎÄ¿¸¦ »ç¿ëÇÏ±â À§ÇØ
+    //ï¿½Üºï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-reactor-netty', version: '2.4.6'
 	
-	//jackson2json¿¡¼­ LocalDateTimeÀ» handling ÇÏ±â À§ÇØ
+	//jackson2jsonï¿½ï¿½ï¿½ï¿½ LocalDateTimeï¿½ï¿½ handling ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.4'
 	
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	
-	/* ---¾Æ·¡´Â ¼±ÅÃ--- */
+	/* ---ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½--- */
 	implementation group: 'org.webjars', name: 'sockjs-client', version: '1.1.2'
 	implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
 }
@@ -80,9 +80,9 @@ test {
 }
 
 task buildZip(type: Zip) {
-    from compileJava  			//ÇÔ¼öÀÇ Å¬·¡½º¸¦ ÄÄÆÄÀÏ
-    from processResources		//Java ÇÁ·ÎÁ§Æ® ¸®¼Ò½º¸¦ ´ë»ó µð·ºÅÍ¸®¿¡ º¹»çÇÏ°í ÀáÀçÀûÀ¸·Î Ã³¸®
-    into('lib') {				//ºôµåÀÇ Å¬·¡½º °æ·Î¿¡¼­ lib¶ó´Â Æú´õ·Î Á¾¼Ó¼º ¶óÀÌºê·¯¸®¸¦ º¹»ç
+    from compileJava  			//ï¿½Ô¼ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    from processResources		//Java ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+    into('lib') {				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ libï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         from configurations.runtimeClasspath
     }
 }
