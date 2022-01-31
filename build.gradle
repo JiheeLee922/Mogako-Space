@@ -52,7 +52,6 @@ dependencies {
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-    implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
     
     implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
     implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
@@ -67,12 +66,9 @@ dependencies {
 	//jackson2json���� LocalDateTime�� handling �ϱ� ����
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.4'
 	
-	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	
 	/* ---�Ʒ��� ����--- */
 	implementation group: 'org.webjars', name: 'sockjs-client', version: '1.1.2'
-	implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
 }
 
 test {
