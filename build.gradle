@@ -1,10 +1,12 @@
 plugins {
 	id 'org.springframework.boot' version '2.5.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+	//querydsl
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+    id 'java'
 }
 
-group = 'com.mogako'
+group = 'com.jihee'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
@@ -18,6 +20,7 @@ repositories {
 	mavenCentral()
 	jcenter()
 }
+
 
 ext {
     set('springCloudVersion', "Greenwich.SR1")
@@ -41,9 +44,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation "org.mariadb.jdbc:mariadb-java-client:2.1.2"
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
-	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-	//implementation 'org.springframework.security:spring-security-taglibs'
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+//	implementation 'org.springframework.security:spring-security-taglibs'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -60,15 +63,16 @@ dependencies {
     runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     
-    //�ܺ� ���Ŀ�� ����ϱ� ����
+    //�쇅遺� 釉뚮줈而ㅻ�� �궗�슜�븯湲� �쐞�빐
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-reactor-netty', version: '2.4.6'
 	
-	//jackson2json���� LocalDateTime�� handling �ϱ� ����
+	//jackson2json�뿉�꽌 LocalDateTime�쓣 handling �븯湲� �쐞�빐
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.4'
 	
-	
-	/* ---�Ʒ��� ����--- */
+	/* ---�븘�옒�뒗 �꽑�깮--- */
 	implementation group: 'org.webjars', name: 'sockjs-client', version: '1.1.2'
+	
+	implementation 'com.querydsl:querydsl-jpa'
 }
 
 test {
@@ -76,9 +80,9 @@ test {
 }
 
 task buildZip(type: Zip) {
-    from compileJava  			//�Լ��� Ŭ������ ������
-    from processResources		//Java ������Ʈ ���ҽ��� ��� ���͸��� �����ϰ� ���������� ó��
-    into('lib') {				//������ Ŭ���� ��ο��� lib��� ������ ���Ӽ� ���̺귯���� ����
+    from compileJava  			//�븿�닔�쓽 �겢�옒�뒪瑜� 而댄뙆�씪
+    from processResources		//Java �봽濡쒖젥�듃 由ъ냼�뒪瑜� ���긽 �뵒�젆�꽣由ъ뿉 蹂듭궗�븯怨� �옞�옱�쟻�쑝濡� 泥섎━
+    into('lib') {				//鍮뚮뱶�쓽 �겢�옒�뒪 寃쎈줈�뿉�꽌 lib�씪�뒗 �뤃�뜑濡� 醫낆냽�꽦 �씪�씠釉뚮윭由щ�� 蹂듭궗
         from configurations.runtimeClasspath
     }
 }
@@ -92,5 +96,27 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
+
+//querydsl �꽕�젙
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+//querydsl �걹
 
 build.dependsOn buildZip
