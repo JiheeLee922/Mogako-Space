@@ -1,15 +1,17 @@
 package com.mogako.mogakospace.user.domain.entity;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.joda.time.DateTime;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -50,11 +52,17 @@ public class UserMastEntity {
 	@Column
 	private LocalDateTime updtDate;
 	
+	@OneToMany(mappedBy = "userMast", fetch = FetchType.LAZY)
+	private Set<UserRewardMapEntity> userRewardMap = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "userMast", fetch = FetchType.LAZY)
+	private Set<UserProjectsEntity> userProjects = new LinkedHashSet<>();
+	
+	
+	
 	@Builder
 	public UserMastEntity(Long userSeq, String nickname, String githubId, String email, String userName,
 			String userJobCd, String introducePhrase, String introduceContent, String profileImgPath, String mobile,
 			LocalDateTime regDate, LocalDateTime updtDate) {
-		super();
 		this.userSeq = userSeq;
 		this.nickname = nickname;
 		this.githubId = githubId;
