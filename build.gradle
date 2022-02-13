@@ -63,16 +63,13 @@ dependencies {
     runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     
-    //�쇅遺� 釉뚮줈而ㅻ�� �궗�슜�븯湲� �쐞�빐
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-reactor-netty', version: '2.4.6'
-	
-	//jackson2json�뿉�꽌 LocalDateTime�쓣 handling �븯湲� �쐞�빐
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.4'
-	
-	/* ---�븘�옒�뒗 �꽑�깮--- */
 	implementation group: 'org.webjars', name: 'sockjs-client', version: '1.1.2'
-	
 	implementation 'com.querydsl:querydsl-jpa'
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.0'
+	
 }
 
 test {
@@ -119,4 +116,7 @@ compileQuerydsl {
 }
 //querydsl �걹
 
-build.dependsOn buildZip
+//build.dependsOn buildZip
+
+
+

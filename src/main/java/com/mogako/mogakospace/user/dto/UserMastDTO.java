@@ -1,24 +1,22 @@
 package com.mogako.mogakospace.user.dto;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
-import com.mogako.mogakospace.member.domain.entity.MemberEntity;
 
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserMastDTO {
 
 	
@@ -34,34 +32,7 @@ public class UserMastDTO {
 	private String mobile;
 	private LocalDateTime regDate;
 	private LocalDateTime updtDate;
-	
-	public MemberEntity toEntity() {
-		return MemberEntity.builder()
-				.email(email)
-				.nickname(nickname)
-				.build();
-	}
-	
-	
-	
-	@Builder
-	public UserMastDTO(Long userSeq, String nickname, String githubId, String email, String userName, String userJob,
-			String introducePhrase, String introduceContent, String profileImgPath, String mobile,
-			LocalDateTime regDate, LocalDateTime updtDate) {
-		this.userSeq = userSeq;
-		this.nickname = nickname;
-		this.githubId = githubId;
-		this.email = email;
-		this.userName = userName;
-		this.userJob = userJob;
-		this.introducePhrase = introducePhrase;
-		this.introduceContent = introduceContent;
-		this.profileImgPath = profileImgPath;
-		this.mobile = mobile;
-		this.regDate = regDate;
-		this.updtDate = updtDate;
-	}
-	
-	
+	private Set<UserRewardMapDTO> userRewardMap = new LinkedHashSet<>();
+	private Set<UserProjectsDTO> userProjects  = new LinkedHashSet<>();
 }
 
