@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +23,6 @@ public class UserMastDTO {
 	
 	private Long userSeq;
 	private String nickname;
-	private String githubId;
 	private String email;
 	private String userName;
 	private String userJob;
@@ -34,5 +34,7 @@ public class UserMastDTO {
 	private LocalDateTime updtDate;
 	private Set<UserRewardMapDTO> userRewardMap = new LinkedHashSet<>();
 	private Set<UserProjectsDTO> userProjects  = new LinkedHashSet<>();
+
+	
 }
 

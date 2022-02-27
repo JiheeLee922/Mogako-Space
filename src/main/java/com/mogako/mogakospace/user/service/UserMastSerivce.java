@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
+import com.mogako.mogakospace.board.dto.BoardDto;
 import com.mogako.mogakospace.user.domain.entity.UserMastEntity;
 import com.mogako.mogakospace.user.domain.repository.UserMastRepository;
 import com.mogako.mogakospace.user.dto.UserMastDTO;
@@ -55,6 +56,5 @@ public class UserMastSerivce{
 		
 		return validatorResult;
 	}
-	
 	
 }
