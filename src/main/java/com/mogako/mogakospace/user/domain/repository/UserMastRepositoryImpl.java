@@ -4,24 +4,26 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import com.mogako.mogakospace.common.domain.entity.QCommonCodeEntity;
 import com.mogako.mogakospace.user.domain.entity.QProjectSkillMapEntity;
 import com.mogako.mogakospace.user.domain.entity.QUserMastEntity;
 import com.mogako.mogakospace.user.domain.entity.QUserProjectsEntity;
 import com.mogako.mogakospace.user.domain.entity.QUserRewardMapEntity;
 import com.mogako.mogakospace.user.domain.entity.UserMastEntity;
 import com.mogako.mogakospace.user.dto.UserMastDTO;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 
-@Service
-public class UserMastRepositoryImpl extends QuerydslRepositorySupport implements UserMastRepository {
-
+@Repository
+public class UserMastRepositoryImpl extends QuerydslRepositorySupport {
+	//private final JPAQueryFactory jpaQueryFactory;
+	
 	public UserMastRepositoryImpl() {
 		super(UserMastEntity.class);
+		
 	}
 
-	@Override
 	@Transactional
 	public UserMastDTO findByEmailWithDsl(String email) 
 	{
@@ -45,6 +47,14 @@ public class UserMastRepositoryImpl extends QuerydslRepositorySupport implements
 		
 		return userDto;
 	}
-	
+
+	@Transactional
+	public long insertAboutMe(UserMastDTO dtl) {
+		
+		
+		return 0;
+	}
+
+
 
 }
