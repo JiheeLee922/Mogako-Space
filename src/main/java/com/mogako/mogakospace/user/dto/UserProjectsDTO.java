@@ -25,7 +25,7 @@ public class UserProjectsDTO {
 	private Long projectSeq;
 	private String projectName;
 	private String introduceText;
-	private String numberParticipants;
+	private String additionalExplanation;
 	private String projectContents1;
 	private String projectContents2;
 	private String projectContents3;
