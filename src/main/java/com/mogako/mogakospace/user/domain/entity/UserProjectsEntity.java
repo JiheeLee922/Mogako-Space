@@ -46,7 +46,7 @@ public class UserProjectsEntity implements Serializable{
 	@Column(length = 500, nullable = true)
 	private String introduceText;
 	@Column(length = 100, nullable = true)
-	private String numberParticipants;
+	private String additionalExplanation;
 	@Column(length = 200, nullable = true)
 	private String projectContents1;
 	@Column(length = 200, nullable = true)

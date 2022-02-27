@@ -25,7 +25,11 @@ public class UserController {
 	
 	@PostMapping("/main/getMainInfo")
 	public UserMastDTO getMainInfo(String email) {
-		return userMastRepositoryImpl.findByEmailWithDsl(email);
+		Decoder decoder = Base64.getDecoder();
+		byte[] decodedBytes = decoder.decode(email);
+		
+		
+		return userMastRepositoryImpl.findByEmailWithDsl(new String(decodedBytes));
 	}
 	
 	@PostMapping("/user/postLogin")
