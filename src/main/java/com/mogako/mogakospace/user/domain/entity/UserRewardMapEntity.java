@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.mogako.mogakospace.common.code.RewardStatus;
+import com.mogako.mogakospace.common.code.RewardStatusConverter;
+import com.mogako.mogakospace.common.code.SkillCode;
+import com.mogako.mogakospace.common.code.SkillCodeConverter;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -34,12 +39,20 @@ public class UserRewardMapEntity implements Serializable{
 	@JsonBackReference
 	private UserMastEntity userMast;
 
-	@Id
-	@Column(length = 100, nullable = false)
-	private String skillCd;
+//	@Id
+//	@Column(length = 100, nullable = false)
+//	private String skillCd;
 	
-	@Column(length = 50, nullable = false)
-	private String rewardStatusCd;
+//	@Column(length = 50, nullable = false)
+//	private String rewardStatusCd;
+
+//	@Id
+	@Convert(converter = SkillCodeConverter.class)
+	private SkillCode skillCd;
+	
+	@Convert(converter = RewardStatusConverter.class)
+	private RewardStatus rewardStatusCd;
+	
 	@Column
 	private LocalDateTime regDate;
 	
