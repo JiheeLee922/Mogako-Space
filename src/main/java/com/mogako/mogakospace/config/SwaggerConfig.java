@@ -27,7 +27,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket apiV1() {
 		version = "V1";
-		title = "My closet API "+ version;
+		title = "Mogako Space API "+ version;
 		
 		List<ResponseMessage> responseMessages = new ArrayList<>();
 		responseMessages.add(new ResponseMessageBuilder()
@@ -44,13 +44,13 @@ public class SwaggerConfig {
 				.build());
 		
 		return new Docket(DocumentationType.SWAGGER_2)
-				.useDefaultResponseMessages(false)		//false�� ������ swagger���� �������ִ� �����ڵ忡 ���� �⺻ �޽��� ����
-				.groupName(version)					//Docket Bean�� �������� ��� groupname�� �浹���� �ʵ��� ��������
-				.select()							//ApiSelectorBuilder ����
-				.apis(RequestHandlerSelectors.basePackage("com.mogako.mogakospace.board.controller"))	//��Ʈ�ѷ��� �ۼ��Ǿ� �ִ� ��Ű�� ����.
-				.paths(PathSelectors.ant("/board/**"))		//apis()���� ���õǾ��� API�� Ư�� path���ǿ� �´� API���� �ٽ� ���͸�
+				.useDefaultResponseMessages(false)		//false로 설정해 swagger에서 제공해주는 응답코드에 대한 기본 메시지 제거
+				.groupName(version)					//Docket Bean이 여러개인 경우 groupname이 충돌하지 않도록 명시해줌
+				.select()							//ApiSelectorBuilder 생성
+				.apis(RequestHandlerSelectors.basePackage("com.mogako.mogakospace.user.controller"))	//컨트롤러가 작성되어 있는 패키지 설정.
+				.paths(PathSelectors.ant("/**"))		//apis()에서 선택되어진 API중 특정 path조건에 맞는 API들을 다시 필터링
 				.build()
-				.apiInfo(apiInfo(title,version)) 		//���� ,���� �� ������ ���� �������� �����ֱ� ���� ȣ��
+				.apiInfo(apiInfo(title,version)) 		//제목 ,설명 등 문서에 대한 정보들을 보여주기 위해 호출
 				.globalResponseMessage(RequestMethod.GET, responseMessages);
 		
 	}
@@ -58,16 +58,16 @@ public class SwaggerConfig {
 	@Bean
 	public Docket apiV2() {
 		version = "V2";
-		title = "My closet API "+ version;
+		title = "Mogako Space API "+ version;
 		
 		return new Docket(DocumentationType.SWAGGER_2)
-				.useDefaultResponseMessages(false)		//false�� ������ swagger���� �������ִ� �����ڵ忡 ���� �⺻ �޽��� ����
-				.groupName(version)					//Docket Bean�� �������� ��� groupname�� �浹���� �ʵ��� ��������
-				.select()							//ApiSelectorBuilder ����
-				.apis(RequestHandlerSelectors.basePackage("com.mogako.mogakospace.member.controller"))	//��Ʈ�ѷ��� �ۼ��Ǿ� �ִ� ��Ű�� ����.
-				.paths(PathSelectors.ant("/**"))		//apis()���� ���õǾ��� API�� Ư�� path���ǿ� �´� API���� �ٽ� ���͸�
+				.useDefaultResponseMessages(false)		//false로 설정해 swagger에서 제공해주는 응답코드에 대한 기본 메시지 제거
+				.groupName(version)					//Docket Bean이 여러개인 경우 groupname이 충돌하지 않도록 명시해줌
+				.select()							//ApiSelectorBuilder 생성
+				.apis(RequestHandlerSelectors.basePackage("com.mogako.mogakospace.user.controller"))	//컨트롤러가 작성되어 있는 패키지 설정.
+				.paths(PathSelectors.ant("/**"))		//apis()에서 선택되어진 API중 특정 path조건에 맞는 API들을 다시 필터링
 				.build()
-				.apiInfo(apiInfo(title,version)); 		//���� ,���� �� ������ ���� �������� �����ֱ� ���� ȣ��
+				.apiInfo(apiInfo(title,version)); 		//제목 ,설명 등 문서에 대한 정보들을 보여주기 위해 호출
 	}
 	
 	
@@ -75,7 +75,7 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo(String title, String version) {
 		return new ApiInfo(
 				title, 
-				"Java Spring boot Jpa ������Ʈ",
+				"Mogako Space",
 				version,
 				"www.example.com",
 				new Contact("Contact Me", "www.example.com", "leejhdev922@gmail.com"), 
