@@ -1,4 +1,4 @@
-package com.mogako.mogakospace.common;
+package com.mogako.mogakospace.common.commonCode;
 
 
 import java.util.EnumSet;

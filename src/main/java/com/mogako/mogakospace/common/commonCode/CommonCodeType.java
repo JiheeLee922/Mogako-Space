@@ -1,4 +1,4 @@
-package com.mogako.mogakospace.common;
+package com.mogako.mogakospace.common.commonCode;
 
 /*
  * 공통코드 리턴  

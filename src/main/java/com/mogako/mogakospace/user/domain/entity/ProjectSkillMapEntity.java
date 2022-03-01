@@ -15,8 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.mogako.mogakospace.common.code.SkillCode;
-import com.mogako.mogakospace.common.code.SkillCodeConverter;
+import com.mogako.mogakospace.common.commonCode.code.SkillCode;
+import com.mogako.mogakospace.common.commonCode.code.SkillCodeConverter;
 
 import lombok.AccessLevel;
 import lombok.Builder;

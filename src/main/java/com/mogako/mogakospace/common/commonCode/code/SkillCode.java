@@ -1,6 +1,6 @@
-package com.mogako.mogakospace.common.code;
+package com.mogako.mogakospace.common.commonCode.code;
 
-import com.mogako.mogakospace.common.CommonCodeType;
+import com.mogako.mogakospace.common.commonCode.CommonCodeType;
 
 import lombok.Getter;
 

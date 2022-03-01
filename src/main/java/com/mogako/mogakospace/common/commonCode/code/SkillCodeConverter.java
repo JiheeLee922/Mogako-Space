@@ -1,6 +1,6 @@
-package com.mogako.mogakospace.common.code;
+package com.mogako.mogakospace.common.commonCode.code;
 
-import com.mogako.mogakospace.common.AbstractCommonEnumAttributeConverter;
+import com.mogako.mogakospace.common.commonCode.AbstractCommonEnumAttributeConverter;
 
 public class SkillCodeConverter extends AbstractCommonEnumAttributeConverter<SkillCode>{
 
